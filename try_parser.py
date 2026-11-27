@@ -20,3 +20,8 @@ print(g.number_of_nodes(), "nodes,", g.number_of_edges(), "edges")
 for src, dst, key, d in g.edges(keys=True, data=True):
     if d["attack_flows"]:
         print(src, "->", dst, key, d["labels"])
+
+from core.risk_scorer import rank_paths, format_path
+
+for p in rank_paths(g, top_n=10):
+    print(format_path(p))
